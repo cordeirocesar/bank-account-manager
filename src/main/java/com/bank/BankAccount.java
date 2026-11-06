@@ -19,6 +19,17 @@ public class BankAccount {
 
         this.balance += amount;
     }
+
+    public void withdraw(double amount) throws InsufficientFundsException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than 0.");
+        } if (amount > balance) {
+            throw new InsufficientFundsException("Insufficient account balance.");
+        }
+
+        this.balance -= amount;
+
+    }
 }
 
 

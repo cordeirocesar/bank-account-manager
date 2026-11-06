@@ -1,4 +1,31 @@
 package com.bank;
 
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class BankAccountTest {
+
+    @Test
+    void shouldDepositMoney() {
+
+        // Arrange
+        BankAccount account = new BankAccount("78945", "Diego Armando Maradona");
+
+        // Act
+        account.deposit(100);
+
+        //Assert
+        assertEquals(100,account.getBalance());
+    }
+
+    @Test
+    void shouldNotDepositNegativeAmount() {
+        // Arrange
+        BankAccount account = new BankAccount("78945", "Diego Armando Maradona");
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            account.deposit(-50);
+        });
+    }
 }

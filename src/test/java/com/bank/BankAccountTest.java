@@ -28,4 +28,15 @@ public class BankAccountTest {
             account.deposit(-50);
         });
     }
+
+    @Test
+    void shouldNotWithdrawMoreThanAvailableBalance() {
+        // Arrange
+        BankAccount account = new BankAccount("78945", "Diego Armando Maradona");
+
+        // Act & Assert
+        assertThrows(InsufficientFundsException.class, () -> {
+            account.withdraw(100);
+        });
+    }
 }

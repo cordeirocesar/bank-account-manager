@@ -39,4 +39,17 @@ public class BankAccountTest {
             account.withdraw(100);
         });
     }
+
+    @Test
+    void shouldWithdrawMoneyWhenSufficientBalance() throws InsufficientFundsException {
+        // Arrange
+        BankAccount account = new BankAccount("78945", "Diego Armando Maradona");
+
+        // Act
+        account.deposit(100);
+        account.withdraw(40);
+
+        // Assert
+        assertEquals(60.0, account.getBalance());
+    }
 }

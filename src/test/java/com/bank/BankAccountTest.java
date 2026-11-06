@@ -52,4 +52,28 @@ public class BankAccountTest {
         // Assert
         assertEquals(60.0, account.getBalance());
     }
+
+    @Test
+    void shouldNotWithdrawNegativeAmount() {
+
+        // Arrange
+        BankAccount account = new BankAccount("78945", "Diego Armando Maradona");
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            account.withdraw(-50);
+        });
+    }
+
+    @Test
+    void shouldNotWithdrawZeroAmount() {
+
+        // Arrange
+        BankAccount account = new BankAccount("78945", "Diego Armando Maradona");
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            account.withdraw(0);
+        });
+    }
 }

@@ -12,6 +12,18 @@ public class BankAccount {
         this.accountHolder = accountHolder;
     }
 
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public String getAccountHolder() {
+        return accountHolder;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
     public void deposit(double amount) {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be greater than 0.");
@@ -23,7 +35,8 @@ public class BankAccount {
     public void withdraw(double amount) throws InsufficientFundsException {
         if (amount <= 0) {
             throw new IllegalArgumentException("Amount must be greater than 0.");
-        } if (amount > balance) {
+        }
+        if (amount > balance) {
             throw new InsufficientFundsException("Insufficient account balance.");
         }
 
